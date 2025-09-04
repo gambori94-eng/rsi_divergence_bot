@@ -1,0 +1,27 @@
+services:
+  - type: worker
+    name: rsi-divergence-telegram-bot
+    env: python
+    region: singapore
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python app.py"
+    autoDeploy: true
+    envVars:
+      - key: SYMBOL
+        value: "BTCUSDT"
+      - key: INTERVALS
+        value: "15m,1h"
+      - key: RSI_PERIOD
+        value: "14"
+      - key: PIVOT_LOOKBACK
+        value: "5"
+      - key: POLL_SEC
+        value: "60"
+      - key: BINANCE_FUTURES_BASE
+        value: "https://fapi.binance.com"
+      # Render 대시보드에서 직접 입력해야 하는 값
+      - key: 8149964887:AAFoOYNrh6OSnLSxBAa4MSucZUbNxcZF-ME
+        sync: false
+      - key: 1867234023
+        sync: false
